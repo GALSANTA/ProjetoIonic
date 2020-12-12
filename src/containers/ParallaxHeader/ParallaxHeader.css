@@ -1,0 +1,10 @@
+.parallax-container {
+    min-height:508px;
+}
+.text-side {
+    min-height: 500px !important;
+}
+
+.texto-tamanho {
+    font-size: 40px;
+}
