@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonSplitPane, IonApp } from '@ionic/react';
+import { IonSplitPane, IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Route } from 'react-router-dom';
 import { routes } from '../../utils/.env.local';
@@ -18,13 +18,12 @@ const Application: React.FC = () => {
                 <IonReactRouter>
                     <IonSplitPane contentId="main">
                         <AppMenu />
-                        <div id="main">
-                            <Route exact path={routes.cep} component={Cep}/>
-                            <Route exact path={routes.lista} render={() => <h1>Lista</h1>} />
-                            <Route exact path={routes.moedas} render={() => <h1>Moedas</h1>} />
+                        <IonRouterOutlet id="main">
+                            <Route exact path={routes.cep} component={Cep} />
+                            <Route exact path={routes.lista} render={() => <h1>Não Implementado</h1>} />
+                            <Route exact path={routes.moedas} render={() => <h1>Não Implementado</h1>} />
                             <Route exact path={routes.configuracoes} component={Configuracoes} />
-                        </div>
-                        
+                        </IonRouterOutlet>
                     </IonSplitPane>
                 </IonReactRouter>
             </IonApp>

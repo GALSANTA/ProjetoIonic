@@ -1,6 +1,8 @@
 import React from 'react';
 import { findCEP } from '../../services/cepAPI';
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent } from '@ionic/react';
+import ToolBar from '../../components/ToolBar/ToolBar';
+
 import './Cep.css';
 
 const Cep: React.FC = () => {
@@ -18,17 +20,7 @@ const Cep: React.FC = () => {
     }
     return (
         <IonContent>
-            <IonHeader>
-                <IonToolbar>
-                    <IonButtons slot="start">
-                        <IonMenuButton />
-
-                    </IonButtons>
-                    <IonTitle> <div className="user-view">
-                        <img src="/assets/img/logo.png" alt="menu" />
-                    </div></IonTitle>
-                </IonToolbar>
-            </IonHeader>
+            <ToolBar/>
 
             <div className="container cep">
                 <div className="row">
