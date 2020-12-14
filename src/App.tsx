@@ -4,10 +4,9 @@ import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home/Home';
 import Resgister from './pages/Register/Register';
+import DeleteData from './pages/DataDelete/DataDelete';
 import PrivateRoute from './PrivateRoute';
-import Application from './pages/Application/Application';
 import NotFound from '../src/pages/NotFound/NotFound';
-
 
 
 /* Core CSS required for Ionic components to work properly */
@@ -33,17 +32,20 @@ import './theme/variables.css';
 const App: React.FC = () => {
 
   return (
+    
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
           <Route path="/home" component={Home} exact={true} />
-          <PrivateRoute path="/app" Component={Application} />
+          <PrivateRoute path="/app/:name" />  
           <Route path="/register" component={Resgister} exact={true} />
+          <Route path="/instrucoes" component={DeleteData} exact={true} />
           <Route exact path="/" render={() => <Redirect to="/home" />} />
           <Route component={() => <NotFound/>} />
         </IonRouterOutlet>
       </IonReactRouter>
-    </IonApp>)
+    </IonApp>
+    )
 
 
 }

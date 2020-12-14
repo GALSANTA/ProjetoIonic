@@ -35,7 +35,17 @@ async function getUser() {
         });
     });
 }
-
+async function deleteAccount() {
+    
+    try {
+        await firebase.default.auth().currentUser?.delete()
+        return true;
+        
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
 async function signOut() {    
     try {
         await firebase.default.auth().signOut();
@@ -49,5 +59,6 @@ export {
     logInUser,
     registerUser,
     getUser,
-    signOut
+    signOut,
+    deleteAccount
 }

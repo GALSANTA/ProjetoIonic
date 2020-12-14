@@ -1,37 +1,32 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import {getUser} from '../src/config/firebaseConfig';
 import AcessDenied from '../src/pages/AcessDenied/AcessDenied';
+import { routes } from '../src/utils/.env.local';
+import Application from './pages/Application/Application';
+
 
 const PrivateRoute: React.FC<{
-    Component: React.FC;
     path: string;
-}> = ({Component, ...rest}) => {
+}> = (path) => {
 
     const [ isLoginDone, setLoginDone ] = React.useState(false);
-
+    
     React.useEffect(() => {
         getUser().then(user =>{
           if (user) {
             setLoginDone(true);
           } else {
             setLoginDone(false);
+            window.location.href = routes.home;
           }
-        });
+        }).catch(error=>console.log(error));        
     });
 
     return(
-        isLoginDone
-        ?
-        <Route { ...rest } render = {props => (
-            isLoginDone
-            ? 
-            (<Component/>) 
-            :
-            (<Redirect to={{pathname: '/', state: {from:props.location}}}/>)
-        )}/>
-        :
-        <AcessDenied/>
+        <Route {...path} render = {() => {
+          return isLoginDone ? <Application /> : <AcessDenied/>
+        }}/>
        );
 }
 

@@ -1,0 +1,11 @@
+.image-tempo {
+    height: 300px !important;
+    width: 300px !important;
+}
+ion-toolbar {
+    --background:#0097a7;
+}
+
+.cep {
+    margin-top: 20px;
+}

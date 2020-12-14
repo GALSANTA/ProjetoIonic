@@ -1,16 +1,40 @@
 import React from 'react';
-import {signOut} from '../../config/firebaseConfig';
-
+import { IonSplitPane, IonApp } from '@ionic/react';
+import { IonReactRouter } from '@ionic/react-router';
+import { Route } from 'react-router-dom';
 import { routes } from '../../utils/.env.local';
+import Cep from '../../containers/Cep/Cep';
+import AppMenu from '../../components/AppMenu/AppMenu';
+import Configuracoes from '../../containers/Configuracoes/Configuracoes';
 
-const App: React.FC = () => {
-    async function haddleSignOut() {
-        
-        await signOut();
+import './Application.css';
 
-        window.location.href = routes.home;        
-    }
-    return (<button onClick={haddleSignOut}>SignOUT</button>)
+const Application: React.FC = () => {
+
+
+    return (
+        <>
+            <IonApp>
+                <IonReactRouter>
+                    <IonSplitPane contentId="main">
+                        <AppMenu />
+                        <div id="main">
+                            <Route exact path={routes.cep} component={Cep}/>
+                            <Route exact path={routes.lista} render={() => <h1>Lista</h1>} />
+                            <Route exact path={routes.moedas} render={() => <h1>Moedas</h1>} />
+                            <Route exact path={routes.configuracoes} component={Configuracoes} />
+                        </div>
+                        
+                    </IonSplitPane>
+                </IonReactRouter>
+            </IonApp>
+
+
+        </>
+
+
+
+    );
 }
 
-export default App;
+export default Application;

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent } from 'react';
 import { logInUser, registerUser } from '../../config/firebaseConfig';
 
 import './Form.css';
@@ -7,9 +7,9 @@ import { routes } from '../../utils/.env.local';
 
 const Form: React.FC<{typeForm:boolean}> = ({typeForm}) => {
 
-    const [email, setEmail] = useState(String);
-    const [password, setPassword] = useState(String);
-    const [cpassword, setCpassword] = useState(String);
+    const [email, setEmail] = React.useState(String);
+    const [password, setPassword] = React.useState(String);
+    const [cpassword, setCpassword] = React.useState(String);
 
 
     async function handleSubmit(e: FormEvent<HTMLFormElement>) {
